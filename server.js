@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -46,13 +46,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Define a middleware handler for the root path ("/") for HEAD requests
-app.head("/", (req, res, next) => {
+app.head("/", (req, res) => {
   // Return a 404 Not Found response
-  res.status(404).send("Not Found");
+  res.status(404).send("You've hit the root!");
+});
+
+app.use("/", (req, res) => {
+  // Return a 404 Not Found response
+  res.status(404).send("You've hit the root!");
 });
 
 app.use("/api", accountRoutes);
 
 app.listen(process.env.PORT || 8000, () => {
-  console.log("Server is running on port 8000");
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
