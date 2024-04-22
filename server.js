@@ -45,8 +45,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/", (req, res) => {
-  res.send("You've hit the database!");
+app.use("/", (req, res) => {
+  // Return a 404 Not Found response
+  res.status(404).send("Not Found");
 });
 
 app.use("/api", accountRoutes);
