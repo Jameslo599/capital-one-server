@@ -30,30 +30,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger("dev"));
 // Sessions
-// app.use(
-//   session({
-//     secret: "ewhf",
-//     resave: false,
-//     saveUninitialized: false,
-//     store: MongoStore.create({
-//       client: mongoose.connection.getClient(),
-//       dbName: "capital-one",
-//     }),
-//   })
-// );
-
 app.use(
   session({
     secret: "ewhf",
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URI,
+      client: mongoose.connection.getClient(),
       dbName: "capital-one",
     }),
   })
 );
-
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
