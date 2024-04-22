@@ -29,17 +29,33 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger("dev"));
+// // Sessions
+// app.use(
+//   session({
+//     secret: "ewhf",
+//     resave: false,
+//     saveUninitialized: false,
+//     store: MongoStore.create({
+//       client: mongoose.connection.getClient(),
+//       dbName: "capital-one",
+//       mongoUrl: process.env.MONGO_URI,
+//     }),
+//   })
+// );
+
 // Sessions
+const mongoStore = MongoStore.create({
+  mongoUrl: process.env.MONGO_URI,
+  dbName: "capital-one",
+  mongooseConnection: mongoose.connection,
+});
+
 app.use(
   session({
     secret: "ewhf",
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({
-      client: mongoose.connection.getClient(),
-      dbName: "capital-one",
-      mongoUrl: process.env.MONGO_URI,
-    }),
+    store: mongoStore,
   })
 );
 
