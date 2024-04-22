@@ -45,6 +45,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get("/", (req, res) => {
+  res.send("You've hit the database!");
+});
+
 app.use("/api", accountRoutes);
 
 app.listen(process.env.PORT || 8000, () => {

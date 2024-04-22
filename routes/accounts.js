@@ -7,9 +7,6 @@ const transactionsController = require("../controllers/transactions");
 const { ensureAuth } = require("../middleware/auth");
 const upload = require("../middleware/multer");
 
-router.get("/", (req, res) => {
-  res.send("You've hit the database!");
-});
 router.get("/user", ensureAuth, accountsController.getAccount);
 router.post("/login", authController.postLogin);
 router.get("/getlogged?", authController.getLogged);
