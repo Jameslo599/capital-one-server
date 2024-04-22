@@ -36,9 +36,8 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      client: mongoose.connection.getClient(),
+      client: mongoose.createConnection(process.env.MONGO_URI).getClient(),
       dbName: "capital-one",
-      mongoUrl: process.env.MONGO_URI,
     }),
   })
 );
