@@ -45,7 +45,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/", (req, res) => {
+// Define a middleware handler for the root path ("/") for HEAD requests
+app.head("/", (req, res, next) => {
   // Return a 404 Not Found response
   res.status(404).send("Not Found");
 });
