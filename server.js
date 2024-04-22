@@ -30,13 +30,25 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger("dev"));
 // Sessions
+// app.use(
+//   session({
+//     secret: "ewhf",
+//     resave: false,
+//     saveUninitialized: false,
+//     store: MongoStore.create({
+//       client: mongoose.connection.getClient(),
+//       dbName: "capital-one",
+//     }),
+//   })
+// );
+
 app.use(
   session({
     secret: "ewhf",
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      client: mongoose.createConnection(process.env.MONGO_URI).getClient(),
+      mongoUrl: process.env.MONGO_URI,
       dbName: "capital-one",
     }),
   })
