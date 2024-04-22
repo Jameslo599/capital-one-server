@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
-const MongoStore = require("connect-mongo");
+const MongoStore = require("connect-mongo").default;
 const logger = require("morgan");
 const connectDB = require("./config/database");
 const accountRoutes = require("./routes/accounts");
@@ -38,6 +38,7 @@ app.use(
     store: MongoStore.create({
       client: mongoose.connection.getClient(),
       dbName: "capital-one",
+      mongoUrl: process.env.MONGO_URI,
     }),
   })
 );
