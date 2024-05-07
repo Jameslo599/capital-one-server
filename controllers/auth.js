@@ -154,7 +154,7 @@ exports.postSignup = async (req, res, next) => {
     lname: req.body[0].lname.toLowerCase(),
     dob: req.body[0].dob,
     mobile: req.body[0].mobile,
-    balance: req.body[0].balance,
+    balance: (+req.body[0].balance).toFixed(2),
     accNum: accNum,
     routing: routing,
   });
