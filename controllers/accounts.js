@@ -27,7 +27,7 @@ const uploadImage = async (imagePath) => {
 module.exports = {
   getAccount: async (req, res) => {
     try {
-      console.log(req.user);
+      console.log(req.user, req);
       const account = await Account.findOne({
         userName: req.user.userName,
       });
