@@ -17,7 +17,7 @@ require("./config/passport")(passport);
 connectDB();
 
 const corsOptions = {
-  origin: "https://codabank.netlify.app/", //Your Client, do not write '*'
+  origin: "https://codabank.netlify.app", //Your Client, do not write '*'
   credentials: true,
 };
 app.use(cors(corsOptions));
