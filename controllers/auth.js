@@ -51,8 +51,8 @@ exports.postLogin = (req, res, next) => {
         return next(err);
       }
       // Save user data to the session
-      req.session.user = user;
-      return res.status(200).json("Success! Logging in...");
+      req.user = user;
+      return res.status(200).json(req.user);
     });
   })(req, res, next);
 };
