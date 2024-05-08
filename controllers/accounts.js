@@ -28,12 +28,12 @@ module.exports = {
   getAccount: async (req, res) => {
     try {
       const account = await Account.findOne({
-        userName: req.user.userName,
+        userName: req.session.user.userName,
       });
       const address = await Address.findOne({
-        id: req.user.id,
+        id: req.session.user.id,
       });
-      if (!account) return res.status(403).json(req.user);
+      if (!account) return res.status(403).json(req.session.user);
       res.status(200).json({ ...account.toJSON(), ...address.toJSON() });
     } catch (err) {
       console.log(err);
