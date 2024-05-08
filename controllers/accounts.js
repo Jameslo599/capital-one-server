@@ -27,14 +27,13 @@ const uploadImage = async (imagePath) => {
 module.exports = {
   getAccount: async (req, res) => {
     try {
-      console.log(req.user, req);
       const account = await Account.findOne({
         userName: req.user.userName,
       });
       const address = await Address.findOne({
         id: req.user.id,
       });
-      if (!account) return res.status(403).json(null);
+      if (!account) return res.status(403).json(req.user);
       res.status(200).json({ ...account.toJSON(), ...address.toJSON() });
     } catch (err) {
       console.log(err);
