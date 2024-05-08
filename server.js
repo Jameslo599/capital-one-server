@@ -7,6 +7,7 @@ const MongoStore = require("connect-mongo");
 const logger = require("morgan");
 const connectDB = require("./config/database");
 const accountRoutes = require("./routes/accounts");
+const cors = require("cors");
 
 require("dotenv").config({ path: "./config/.env" });
 
@@ -31,6 +32,7 @@ app.use(function (req, res, next) {
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors({ origin: true }));
 app.use(logger("dev"));
 // Sessions
 app.use(
