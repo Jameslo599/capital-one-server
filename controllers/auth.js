@@ -50,6 +50,8 @@ exports.postLogin = (req, res, next) => {
       if (err) {
         return next(err);
       }
+      // Save user data to the session
+      req.session.user = user;
       return res.status(200).json("Success! Logging in...");
     });
   })(req, res, next);

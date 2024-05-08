@@ -16,6 +16,12 @@ require("./config/passport")(passport);
 
 connectDB();
 
+const corsOptions = {
+  origin: "https://codabank.netlify.app/", //Your Client, do not write '*'
+  credentials: true,
+};
+app.use(cors(corsOptions));
+
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -32,7 +38,6 @@ app.use(function (req, res, next) {
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({ origin: true }));
 app.use(logger("dev"));
 // Sessions
 app.use(
