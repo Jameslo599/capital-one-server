@@ -50,6 +50,14 @@ app.use(
       client: mongoose.connection.getClient(),
       dbName: "capital-one",
     }),
+    cookie: {
+      // Customize session cookie options here
+      maxAge: 3 * 24 * 60 * 60 * 1000, // Session expiration time (in milliseconds)
+      secure: true, // Set to true if serving over HTTPS
+      httpOnly: true, // Restrict access to cookies from client-side JavaScript
+      sameSite: "strict", // Prevent cross-site request forgery
+      // Other cookie options...
+    },
   })
 );
 // Passport middleware
