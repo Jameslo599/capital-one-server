@@ -17,13 +17,16 @@ connectDB();
 require("./config/passport")(passport);
 
 const corsOptions = {
-  origin: "https://resilientcoda.com", //Your Client, do not write '*'
+  origin: "https://www.resilientcoda.com/", //Your Client, do not write '*'
   credentials: true,
 };
 app.use(cors(corsOptions));
 
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "https://resilientcoda.com"); // Set specific origin
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://www.resilientcoda.com/"
+  ); // Set specific origin
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, authorization"
