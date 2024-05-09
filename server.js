@@ -10,31 +10,10 @@ const accountRoutes = require("./routes/accounts");
 const cors = require("cors");
 
 require("dotenv").config({ path: "./config/.env" });
+connectDB();
 
 // Passport config
 require("./config/passport")(passport);
-
-connectDB().then(() => {
-  app.use(
-    session({
-      secret: "ewhf",
-      resave: false,
-      saveUninitialized: false,
-      store: MongoStore.create({
-        client: mongoose.connection.getClient(),
-        dbName: "capital-one",
-      }),
-      cookie: {
-        // Customize session cookie options here
-        maxAge: 3 * 24 * 60 * 60 * 1000, // Session expiration time (in milliseconds)
-        secure: true, // Set to true if serving over HTTPS
-        httpOnly: true, // Restrict access to cookies from client-side JavaScript
-        sameSite: "none", // Prevent cross-site request forgery
-        // Other cookie options...
-      },
-    })
-  );
-});
 
 const corsOptions = {
   origin: "https://codabank.netlify.app", //Your Client, do not write '*'
@@ -62,6 +41,25 @@ app.use(express.json());
 app.use(logger("dev"));
 // Sessions
 app.set("trust proxy", 1);
+app.use(
+  session({
+    secret: "ewhf",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      client: mongoose.connection.getClient(),
+      dbName: "capital-one",
+    }),
+    cookie: {
+      // Customize session cookie options here
+      maxAge: 3 * 24 * 60 * 60 * 1000, // Session expiration time (in milliseconds)
+      secure: true, // Set to true if serving over HTTPS
+      httpOnly: true, // Restrict access to cookies from client-side JavaScript
+      sameSite: "none", // Prevent cross-site request forgery
+      // Other cookie options...
+    },
+  })
+);
 
 // Passport middleware
 app.use(passport.initialize());
