@@ -41,7 +41,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger("dev"));
 // Sessions
-//app.set("trust proxy", 1);
+app.set("trust proxy", 1);
 app.use(
   session({
     secret: "ewhf",
