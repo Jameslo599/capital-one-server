@@ -13,6 +13,7 @@ require("dotenv").config({ path: "./config/.env" });
 
 const client = connectDB()
   .then((mClient) => {
+    console.log(mClient);
     return mClient;
   })
   .catch((err) => console.log(err));
@@ -53,7 +54,6 @@ app.use(
     saveUninitialized: false,
     store: MongoStore.create({
       client: client,
-      //client: mongoose.connection.getClient(),
       dbName: "capital-one",
     }),
     cookie: {
