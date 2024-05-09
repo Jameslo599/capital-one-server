@@ -48,8 +48,8 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URI,
-      //   client: mongoose.connection.getClient(),
+      //mongoUrl: process.env.MONGO_URI,
+      client: mongoose.connection.getClient(),
       dbName: "capital-one",
     }),
     cookie: {
