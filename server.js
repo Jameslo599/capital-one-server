@@ -23,7 +23,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "https://codabank.netlify.app"); // Set specific origin
+  res.setHeader("Access-Control-Allow-Origin", "https://resilientcoda.com"); // Set specific origin
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, authorization"
@@ -41,7 +41,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger("dev"));
 // Sessions
-app.set("trust proxy", 1);
+//app.set("trust proxy", 1);
 app.use(
   session({
     secret: "ewhf",
