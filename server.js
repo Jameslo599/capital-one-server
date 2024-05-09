@@ -10,7 +10,12 @@ const accountRoutes = require("./routes/accounts");
 const cors = require("cors");
 
 require("dotenv").config({ path: "./config/.env" });
-connectDB();
+
+const client = connectDB()
+  .then((mClient) => {
+    return mClient;
+  })
+  .catch((err) => console.log(err));
 
 // Passport config
 require("./config/passport")(passport);
@@ -47,7 +52,8 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      client: mongoose.connection.getClient(),
+      client: client,
+      //client: mongoose.connection.getClient(),
       dbName: "capital-one",
     }),
     cookie: {
