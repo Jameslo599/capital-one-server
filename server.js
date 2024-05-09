@@ -11,12 +11,7 @@ const cors = require("cors");
 
 require("dotenv").config({ path: "./config/.env" });
 
-const client = connectDB()
-  .then((mClient) => {
-    console.log(mClient);
-    return mClient;
-  })
-  .catch((err) => console.log(err));
+connectDB();
 
 // Passport config
 require("./config/passport")(passport);
@@ -53,7 +48,8 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      client: client,
+      mongoUrl: process.env.MONGO_URI,
+      //   client: mongoose.connection.getClient(),
       dbName: "capital-one",
     }),
     cookie: {
