@@ -54,7 +54,7 @@ app.use(
     }),
     cookie: {
       // Customize session cookie options here
-      domain: "https://resilientcoda.com",
+      domain: "resilientcoda.com",
       maxAge: 3 * 24 * 60 * 60 * 1000, // Session expiration time (in milliseconds)
       secure: true, // Set to true if serving over HTTPS
       httpOnly: true, // Restrict access to cookies from client-side JavaScript
