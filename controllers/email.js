@@ -35,7 +35,7 @@ module.exports = {
         subject: "Capital One Username", // Subject line
         text: `Your Capital One username is ${req.body[1]}`, // plain text body
         html: `Your Capital One username is <b>${req.body[1]}</b><br/>
-                If you wish to reset your password, please use this link: <a href=http://localhost:3000/reset-password/${ident}/${today}/${await secretKey()}>here</a> `, // html body
+                If you wish to reset your password, please use this link: <a href=https://resilientcoda.com/reset-password/${ident}/${today}/${await secretKey()}>here</a> `, // html body
       });
       res.status(200).json("Email containing username sent!");
       console.log("Message sent: %s", info.messageId);
