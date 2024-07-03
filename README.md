@@ -24,6 +24,8 @@ This was my first time applying MVC principles to a React application, and it wa
 
 I enjoyed learning a wide variety of Node.js modules to enhance my project’s features and complexity. For example, users can upload profile pictures using FileReader and Multer for file submissions. It was my first experience working with user uploads, so I dedicated time to learning about different image types and how to limit sizes to under 1MB to preserve bandwidth and reduce waste.
 
+I chose MongoDB for my model due to its speed and ease of use, requiring only knowledge of object manipulation. To leverage schema features, I used Mongoose with MongoDB. I created three schemas: account, address, and transaction. Separating these schemas improves code readability, and each schema includes the associated account ID, making it easy to retrieve information for the front-end. Additionally, Mongoose is used with express-session to store sessions in the database. If a user has an existing session, a cookie is sent to the backend to be validated against the session storage key in the database. When they match, the user's session is restored.
+
 ## Optimizations
 
 ## Lessons Learned:
