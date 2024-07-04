@@ -26,6 +26,8 @@ I enjoyed learning a wide variety of Node.js modules to enhance my project’s f
 
 I chose MongoDB for my model due to its speed and ease of use, requiring only knowledge of object manipulation. To leverage schema features, I used Mongoose with MongoDB. I created three schemas: account, address, and transaction. Separating these schemas improves code readability, and each schema includes the associated account ID, making it easy to retrieve information for the front-end. Additionally, Mongoose is used with express-session to store sessions in the database. If a user has an existing session, a cookie is sent to the backend to be validated against the session storage key in the database. When they match, the user's session is restored.
 
+When a user wants to reset their password, they must first verify their account email, last name and date of birth. This will then send a POST request to the email controller where I use bcrypt to salt and hash a base36 key that will be valid for 24 hours. An email is then sent using nodemailer to the user's email address where they can click a link that includes the secret key. When the user visits the page, the server will verify the validity of the key before allowing the user to submit a PUT request to change their password.
+
 ## Optimizations
 
 ## Lessons Learned:
