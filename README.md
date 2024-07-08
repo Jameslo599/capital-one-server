@@ -32,6 +32,8 @@ When a user wants to reset their password, they must first verify their account 
 
 I believe some of the async functions in the controllers can be written more succinctly and elegantly. Much of this code was written early on, and my syntax improved throughout the development cycle. Writing cleaner code will enhance readability and potentially improve the overall speed of the back-end.
 
+While I appreciate MVC principles, I'm not sure if they are the best fit when combining React and Express. This approach requires sending multiple fetch requests and responses that otherwise wouldn't be necessary. I'm currently exploring Next.js to see if it addresses this specific issue.
+
 ## Lessons Learned:
 
 Enforcing MVC principles was challenging initially, especially since I used React as my frontend framework. I learned to separate the frontend views from the backend model and controller, creating a cohesive system. The only downside was that some modules, like banner popups, didn't work properly by default due to using fetch requests for client-server communication. I overcame this issue by implementing React-toastify, a more elegant and straightforward way to display status notifications and inform users of the results of their requests.
